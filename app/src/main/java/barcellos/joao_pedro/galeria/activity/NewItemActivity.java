@@ -35,14 +35,45 @@ public class NewItemActivity extends AppCompatActivity {
             // Colocando evento para pegar clicks no botão
             @Override
             public void onClick(View view) {
+
+                if(photoSelected == null){
+                    // Verificando se não foi selecionada uma foto
+                    Toast.makeText(NewItemActivity.this, "É necessário selecionar " +
+                            "uma imagem!", Toast.LENGTH_LONG).show();
+                    // Mensagem de erro informando ao usuário e terminando a função.
+                    return;
+                }
                 EditText etTitle = findViewById(R.id.etTitle);
                 // Pegando o EditText de título da activity_new_item.xml
                 String title = etTitle.getText().toString();
                 // Pegando a string do editText.
                 if(title.isEmpty()){
+                    // Verificando se a string é vazia
                     Toast.makeText(NewItemActivity.this, "É necessário inserir um " +
                             "título", Toast.LENGTH_LONG).show();
+                    // Mensagem de erro informando ao usuário e terminando a função.
+                    return;
                 }
+
+                EditText etDesc = findViewById(R.id.etDesc);
+                // Pegando o EditText de descrição da activity_new_item.xml
+                String description = etDesc.getText().toString();
+                // Pegando a string do editText.
+                if(description.isEmpty()){
+                    Toast.makeText(NewItemActivity.this, "É necessário inserir um" +
+                            "descrição", Toast.LENGTH_LONG).show();
+                    // Mensagem de erro informando ao usuário e terminando a função.
+                    return;
+                }
+
+                Intent i = new Intent();
+                // Criação de uma intent e passando as informações da imagem, do título e da descrição
+                i.setData(photoSelected);
+                i.putExtra("title", title);
+                i.putExtra("description", description);
+                setResult(Activity.RESULT_OK, i);
+                // Indicando que há dados para retorno
+                finish(); // Finalizando a Activity
             }
         });
 

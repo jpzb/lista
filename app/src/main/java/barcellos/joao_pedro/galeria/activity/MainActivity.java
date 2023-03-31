@@ -1,23 +1,55 @@
 package barcellos.joao_pedro.galeria.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import barcellos.joao_pedro.galeria.R;
+import barcellos.joao_pedro.galeria.adapter.MyAdapter;
+import barcellos.joao_pedro.galeria.model.MyItem;
 
 public class MainActivity extends AppCompatActivity {
     
     static int NEW_ITEM_REQUEST = 1;
     // Identificiador da chamada de Activity
+
+    MyAdapter myAdapter;
+    List<MyItem> itens = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        RecyclerView rvItens = findViewById(R.id.rvItens);
+        // Pegando o RecyclerView da activity_main.xml
+
+        myAdapter = new MyAdapter(this, itens);
+        rvItens.setAdapter(myAdapter);
+        // Setando o MyAdapter no RecyclerView
+
+        rvItens.setHasFixedSize(true);
+        // Indica que não haverá mudança de tamanho de cada item
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        rvItens.setLayoutManager(layoutManager);
+        // Setando o gerenciador de layout do tipo linear
+        // Faz com que a lista organiza-se na vertical
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
+                rvItens.getContext(), DividerItemDecoration.VERTICAL);
+        rvItens.addItemDecoration(dividerItemDecoration);
+        // Decoração de divisor de lista que divide os itens em uma lista.
+
 
         FloatingActionButton fabAddItem = findViewById(R.id.fabAddNewItem);
         // Pegando o FloatingActionButton da activity_main.xml
@@ -31,5 +63,28 @@ public class MainActivity extends AppCompatActivity {
                 // Iniciando a intenção, assumindo que a nova intenção retornará alguma informação
             }
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        // requestCode identifica a chamada do startActivityForResult
+        // resultCode identifica se a Activity retornou com sucesso
+        // data contém os dados retornados
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == NEW_ITEM_REQUEST){
+            // Verifica se o requestCode é igual o fornecido no startActivityForResult
+            if(resultCode == Activity.RESULT_OK){
+                // Verifica se a Activity retornou com sucesso
+                MyItem myItem = new MyItem(); // Criando um objeto de classe MyItem
+                myItem.title = data.getStringExtra("title");
+                // Colocando o atributo de título recebido da NewItemActivity no myItem
+                myItem.descripion = data.getStringExtra("description");
+                // Colocando o atributo de descrição recebido da NewItemActivity no myItem
+                myItem.photo = data.getData();
+                // Colocando a foto recebida da NewItemActivity no myItem
+
+                itens.add(myItem);
+                // Colocando na lista de itens criado no MainActivity
+            }
+        }
     }
 }
