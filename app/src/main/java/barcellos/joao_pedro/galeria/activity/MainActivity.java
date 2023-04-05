@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 itens.add(myItem);
                 // Colocando na lista de itens criado no MainActivity
+                myAdapter.notifyItemInserted(itens.size()-1);
             }
         }
     }
