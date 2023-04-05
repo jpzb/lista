@@ -1,4 +1,4 @@
-package barcellos.joao_pedro.galeria.model;
+package barcellos.joao_pedro.lista.model;
 
 import android.net.Uri;
 

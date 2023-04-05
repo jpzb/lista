@@ -1,4 +1,4 @@
-package barcellos.joao_pedro.galeria.adapter;
+package barcellos.joao_pedro.lista.adapter;
 
 import android.view.View;
 

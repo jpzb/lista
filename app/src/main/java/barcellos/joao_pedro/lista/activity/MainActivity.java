@@ -1,4 +1,4 @@
-package barcellos.joao_pedro.galeria.activity;
+package barcellos.joao_pedro.lista.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -15,9 +15,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import barcellos.joao_pedro.galeria.R;
-import barcellos.joao_pedro.galeria.adapter.MyAdapter;
-import barcellos.joao_pedro.galeria.model.MyItem;
+import barcellos.joao_pedro.lista.R;
+import barcellos.joao_pedro.lista.adapter.MyAdapter;
+import barcellos.joao_pedro.lista.model.MyItem;
 
 public class MainActivity extends AppCompatActivity {
     

@@ -1,4 +1,4 @@
-package barcellos.joao_pedro.galeria;
+package barcellos.joao_pedro.lista;
 
 import org.junit.Test;
 

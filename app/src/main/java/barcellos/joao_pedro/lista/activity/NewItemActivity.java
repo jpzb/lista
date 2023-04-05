@@ -1,4 +1,4 @@
-package barcellos.joao_pedro.galeria.activity;
+package barcellos.joao_pedro.lista.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import barcellos.joao_pedro.galeria.R;
+import barcellos.joao_pedro.lista.R;
 
 public class NewItemActivity extends AppCompatActivity {
 

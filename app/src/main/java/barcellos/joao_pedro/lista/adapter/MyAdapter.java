@@ -1,4 +1,4 @@
-package barcellos.joao_pedro.galeria.adapter;
+package barcellos.joao_pedro.lista.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import barcellos.joao_pedro.galeria.R;
-import barcellos.joao_pedro.galeria.activity.MainActivity;
-import barcellos.joao_pedro.galeria.model.MyItem;
+import barcellos.joao_pedro.lista.R;
+import barcellos.joao_pedro.lista.activity.MainActivity;
+import barcellos.joao_pedro.lista.model.MyItem;
 
 public class MyAdapter extends RecyclerView.Adapter {
 
