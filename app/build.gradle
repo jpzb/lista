@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'barcellos.joao_pedro.galeria'
+    namespace 'barcellos.joao_pedro.lista'
     compileSdk 33
 
     defaultConfig {
-        applicationId "barcellos.joao_pedro.galeria"
+        applicationId "barcellos.joao_pedro.lista"
         minSdk 24
         targetSdk 33
         versionCode 1
