@@ -40,10 +40,13 @@ public class MyAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        // Guarda os itens
+        // holder contêm uma interface (View)
+
         MyItem myItem = itens.get(position);
+        // Guarda o item usado para preencher a UI na posição "position" do itens
 
         View v = holder.itemView;
+        // Guardando o objeto View que está dentro do holder criado no onCreateViewHolder
 
         ImageView imvfoto = v.findViewById(R.id.imvPhoto);
         imvfoto.setImageURI(myItem.photo);
@@ -62,4 +65,5 @@ public class MyAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return itens.size();
     }
+    // Retorna a quantidade de itens no objeto
 }

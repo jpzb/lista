@@ -35,8 +35,10 @@ public class MainActivity extends AppCompatActivity {
         // Pegando o RecyclerView da activity_main.xml
 
         myAdapter = new MyAdapter(this, itens);
+        // Criando MyAdapter da MainActivity
+
         rvItens.setAdapter(myAdapter);
-        // Setando o MyAdapter no RecyclerView
+        // Setando o MyAdapter como adaptador do RecyclerView
 
         rvItens.setHasFixedSize(true);
         // Indica que não haverá mudança de tamanho de cada item
