@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
                 rvItens.getContext(), DividerItemDecoration.VERTICAL);
         rvItens.addItemDecoration(dividerItemDecoration);
-        // Decoração de divisor de lista que divide os itens em uma lista.
+        // Adiciona a decoração de divisor de lista que divide os itens em uma lista no RecyclerView.
 
 
         FloatingActionButton fabAddItem = findViewById(R.id.fabAddNewItem);
