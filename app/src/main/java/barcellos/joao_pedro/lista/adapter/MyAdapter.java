@@ -49,7 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter {
         // Guardando o objeto View que está dentro do holder criado no onCreateViewHolder
 
         ImageView imvfoto = v.findViewById(R.id.imvPhoto);
-        imvfoto.setImageURI(myItem.photo);
+        imvfoto.setImageBitmap(myItem.photo);
         // Preenche a UI com o ImageView com a foto
 
         TextView tvTitle = v.findViewById(R.id.tvTitle);

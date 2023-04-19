@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,6 +20,7 @@ import java.util.List;
 import barcellos.joao_pedro.lista.R;
 import barcellos.joao_pedro.lista.adapter.MyAdapter;
 import barcellos.joao_pedro.lista.model.MyItem;
+import barcellos.joao_pedro.lista.model.Util;
 
 public class MainActivity extends AppCompatActivity {
     
@@ -81,7 +84,13 @@ public class MainActivity extends AppCompatActivity {
                 // Colocando o atributo de título recebido da NewItemActivity no myItem
                 myItem.descripion = data.getStringExtra("description");
                 // Colocando o atributo de descrição recebido da NewItemActivity no myItem
-                myItem.photo = data.getData();
+
+                Uri selectPhotoURI = data.getData();
+
+                try {
+                    Bitmap photo = Util.getBitmap(MainActivity.this, selectPhotoURI, 100, 100);
+                    myItem.photo = photo;
+                }
                 // Colocando a foto recebida da NewItemActivity no myItem
 
                 itens.add(myItem);
