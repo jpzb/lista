@@ -1,6 +1,7 @@
 package barcellos.joao_pedro.lista.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,11 +15,13 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 import barcellos.joao_pedro.lista.R;
 import barcellos.joao_pedro.lista.adapter.MyAdapter;
+import barcellos.joao_pedro.lista.model.MainActivityViewModel;
 import barcellos.joao_pedro.lista.model.MyItem;
 import barcellos.joao_pedro.lista.model.Util;
 
@@ -28,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     // Identificiador da chamada de Activity
 
     MyAdapter myAdapter;
-    List<MyItem> itens = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView rvItens = findViewById(R.id.rvItens);
         // Pegando o RecyclerView da activity_main.xml
+
+        MainActivityViewModel vm = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        // Colocando os itens no ViewModel e passando pra lista de itens
+        List<MyItem> itens = vm.getItens();
 
         myAdapter = new MyAdapter(this, itens);
         // Criando MyAdapter da MainActivity
@@ -90,8 +96,17 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Bitmap photo = Util.getBitmap(MainActivity.this, selectPhotoURI, 100, 100);
                     myItem.photo = photo;
+                    // Pegando o BitMap da foto, isto é, a imagem carregada na memória e
+                    // colocando na variável photo do Item.
+                }catch (FileNotFoundException e){
+                    // Será disparada quando não achar nenhuma foto
+                    e.printStackTrace();
                 }
                 // Colocando a foto recebida da NewItemActivity no myItem
+
+                MainActivityViewModel vm = new ViewModelProvider(this).get(MainActivityViewModel.class);
+                // Colocando os itens no ViewModel e passando pra lista de itens
+                List<MyItem> itens = vm.getItens();
 
                 itens.add(myItem);
                 // Colocando na lista de itens criado no MainActivity
